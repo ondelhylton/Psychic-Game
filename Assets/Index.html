@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+    <script src="./Javascript/game.js"></script>
+</head>
+
+
+<body style="background-color:powderblue;">
+
+    <div style="text-align: center">
+            <h1 style= "color: rgb(24, 0, 241); font-family: pacifico; font-size: 500%">The Psychic Game</h1>
+            <h2 id="directions-text" style="font-size: 200%">Guess what vowels I'm thinking of?</h2>
+    </div>      
+            
+    <div style="background-color:rgb(233, 230, 230); width: 300px; margin: 0 auto; padding: 5px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
+            <p id="wins-text">Wins:</p>
+            <p id="losses-text">Losses:</p>
+            <p id="guesses-text">Guesses:</p>
+            <p id="log">Guesses so far:</p>
+    </div>
+    
+
+
+
+<script type="text/javascript">
+
+var computerpicks = ["a", "e", "i", "o", "u",];
+ 
+
+var wins = 0;
+var losses = 0;
+var guesses = 10;
+
+    var userlog = document.getElementById("log");
+    var guessestext = document.getElementById("guesses-text");
+    var winstext = document.getElementById("wins-text");
+    var lossestext = document.getElementById("losses-text");
+
+
+
+document.onkeyup = function(event) {
+var userguesses = event.key;
+
+
+
+var computerguess = computerpicks[Math.floor(Math.random() * computerpicks.length)];
+
+
+
+    if ( userguesses === computerguess) {
+        wins++; 
+
+    } else {
+        losses++;
+    }
+
+    if ( userguesses === computerguess) {
+        guesses--; 
+
+    }
+
+    if ( userguesses != computerguess) {
+        guesses--; 
+
+    }
+
+    if ((userguesses != "a") && (userguesses != "e") && (userguesses != "i") && (userguesses != "o") && (userguesses != "u")) {
+
+    alert("That's not a vowel!");
+    }
+
+    
+
+        winstext.textContent = "Wins: " + wins;
+        lossestext.textContent = "Losses: " + losses;
+        guessestext.textContent = "Guesses left: " + guesses;
+        userlog.innerHTML= "Letters Guessed: " + userguesses;   
+
+        
+}
+ // Need to run function in a loop nine times, declare winner and start over. 
+ //Separate game using all letters and letting a user have nine tries
+
+</script>
+    
+</body>
+</html>
